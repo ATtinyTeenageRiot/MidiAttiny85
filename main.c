@@ -7,7 +7,6 @@
 #include "main.h"
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <avr/sleep.h>
 #include <avr/pgmspace.h>
 #include <avr/wdt.h>
 #include <avr/eeprom.h>
@@ -414,7 +413,7 @@ int main()
 				midiMsg[0] = 0x0b;			// CN = 0 (high nibble), CID = control change (low nibble)
 				midiMsg[1] = 0xb0;			// Channel voice message "Control change" (1011xxxx) on channel 1 (xxxx0000)
 				midiMsg[2] = 70;			// cc
-				midiMsg[3] = uADC >> 1;		// 7 bit
+				midiMsg[3] = 22;		// 7 bit
 				usbSetInterrupt(midiMsg, 4);
 
 				nADCOld = uADC;
